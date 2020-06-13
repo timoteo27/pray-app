@@ -1,0 +1,12 @@
+.page-home {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.page-home form .field {
+
+}
+
+.page-home form .field label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
