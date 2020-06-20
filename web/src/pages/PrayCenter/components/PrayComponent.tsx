@@ -17,11 +17,23 @@ const PrayItem: React.FC<PrayItemProps> = ({pray, deletePray, makePray, editPray
         setPrayState(pray);
         console.log('useEffect!');
     }, [pray]);
-    
+
+    function returnDateTimeForUser(dateTime: Date | undefined){
+        if (dateTime == undefined){
+            return 'Nunca!'
+        }
+        return `${dateTime.toLocaleTimeString()} ${dateTime.toLocaleDateString()}`;        
+    }
+
     return (
         <div key={prayState.id}>    
             <div id="prayInformation" hidden={flagPrayInformation}>
-                <span>Categoria: {prayState.category_id} | {prayState.description} | Última oração em: {prayState.last_time_prayed.toLocaleTimeString()} {prayState.last_time_prayed.toLocaleDateString()}</span>
+                <span>
+                    Categoria: {prayState.category_id} | 
+                    {prayState.description} | 
+                    Última oração em: {returnDateTimeForUser(prayState.last_time_prayed)} |
+                    Postergado para: {returnDateTimeForUser(prayState.snooze_date)} |
+                </span>
                 <button type="button" id="buttonPray" onClick={() => makePray(pray)}>Orar</button>
                 <button type="button" id="buttonOptions" onClick={() => {setFlagPrayInformation(true)}}>Mais opções...</button>
             </div>                
